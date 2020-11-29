@@ -9,7 +9,7 @@ module.exports = {
   name: "playlist",
   cooldown: 5,
   aliases: ["pl"],
-  description: "Play a playlist from youtube",
+  description: "listasion de iutu",
   async execute(message, args) {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
@@ -18,16 +18,16 @@ module.exports = {
       return message
         .reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
         .catch(console.error);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
+    if (!channel) return message.reply("entra en un canal de bos primero pendejo").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.reply("Cannot connect to voice channel, missing permissions");
+      return message.reply("no poder conectar canal mira si tengo permiso");
     if (!permissions.has("SPEAK"))
-      return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
+      return message.reply("no poder avlar en canal mira si tengo permiso");
 
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
+      return message.reply(`tene ke estar en el mismo canal ke ${message.client.user} subnormal de mierda`).catch(console.error);
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
@@ -53,11 +53,11 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("Playlist not found :(").catch(console.error);
+        return message.reply("a la mierda no encontre la lista (").catch(console.error);
       }
     } else if (scdl.isValidUrl(args[0])) {
       if (args[0].includes("/sets/")) {
-        message.channel.send("⌛ fetching the playlist...");
+        message.channel.send("cargando la lista ahre");
         playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID);
         videos = playlist.tracks.map((track) => ({
           title: track.title,
@@ -78,9 +78,9 @@ module.exports = {
 
     const newSongs = videos.map((video) => {
       return (song = {
-        title: video.title,
-        url: video.url,
-        duration: video.durationSeconds
+        titulasion: video.title,
+        linc: video.url,
+        durasion: video.durationSeconds
       });
     });
 
@@ -96,9 +96,9 @@ module.exports = {
 
     if (playlistEmbed.description.length >= 2048)
       playlistEmbed.description =
-        playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit...";
+        playlistEmbed.description.substr(0, 2007) + "\nla lista e mas larga que limite";
 
-    message.channel.send(`${message.author} Started a playlist`, playlistEmbed);
+    message.channel.send(`${message.author} inisio una lista ahre`, playlistEmbed);
 
     if (!serverQueue) {
       message.client.queue.set(message.guild.id, queueConstruct);
@@ -111,7 +111,7 @@ module.exports = {
         console.error(error);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(`Could not join the channel: ${error.message}`).catch(console.error);
+        return message.channel.send(`no poder entrar en canal ${error.message}`).catch(console.error);
       }
     }
   }
