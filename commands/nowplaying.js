@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "np",
-  description: "Show now playing song",
+  description: "dise que se esta reprodusiendo aora",
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.reply("no ai nada reprodusiendo pendejo").catch(console.error);
