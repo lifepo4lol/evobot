@@ -4,14 +4,14 @@ module.exports = {
   name: "queue",
   cooldown: 60,
   aliases: ["q"],
-  description: "Show the music queue and now playing.",
+  description: "filasion de musicas",
   async execute(message) {
     const permissions = message.channel.permissionsFor(message.client.user);
     if (!permissions.has(["MANAGE_MESSAGES", "ADD_REACTIONS"]))
-      return message.reply("Missing permission to manage messages or add reactions");
+      return message.reply("no tener permiso para reacsion");
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("❌ **Nothing playing in this server**");
+    if (!queue) return message.channel.send("no ai nada reprodusiendo jaja saludos");
 
     let currentPage = 0;
     const embeds = generateQueueEmbed(message, queue.songs);
@@ -71,7 +71,7 @@ function generateQueueEmbed(message, queue) {
     const info = current.map((track) => `${++j} - [${track.title}](${track.url})`).join("\n");
 
     const embed = new MessageEmbed()
-      .setTitle("Song Queue\n")
+      .setTitle("listasion de musica\n")
       .setThumbnail(message.guild.iconURL())
       .setColor("#F8AA2A")
       .setDescription(`**Current Song - [${queue[0].title}](${queue[0].url})**\n\n${info}`)
