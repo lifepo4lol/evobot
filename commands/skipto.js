@@ -3,7 +3,7 @@ const { canModifyQueue } = require("../util/EvobotUtil");
 module.exports = {
   name: "skipto",
   aliases: ["st"],
-  description: "Skip to the selected queue number",
+  description: "saltea a la musica k eleji",
   execute(message, args) {
     if (!args.length || isNaN(args[0]))
       return message
@@ -11,10 +11,10 @@ module.exports = {
         .catch(console.error);
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is no queue.").catch(console.error);
+    if (!queue) return message.channel.send("no ai fila pendejo").catch(console.error);
     if (!canModifyQueue(message.member)) return;
     if (args[0] > queue.songs.length)
-      return message.reply(`The queue is only ${queue.songs.length} songs long!`).catch(console.error);
+      return message.reply(`la fila solo tener ${queue.songs.length} no poder saltear`).catch(console.error);
 
     queue.playing = true;
 
@@ -27,6 +27,6 @@ module.exports = {
     }
 
     queue.connection.dispatcher.end();
-    queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
+    queue.textChannel.send(`${message.author} salteo a ${args[0] - 1} songs`).catch(console.error);
   }
 };
