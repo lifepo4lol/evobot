@@ -4,18 +4,18 @@ const lyricsFinder = require("lyrics-finder");
 module.exports = {
   name: "lyrics",
   aliases: ["ly"],
-  description: "Get lyrics for the currently playing song",
+  description: "consige las letras para la musicacion pero nunca funciona por que no",
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
+    if (!queue) return message.channel.send("no ai nada reprodusiendo pendejo").catch(console.error);
 
     let lyrics = null;
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      if (!lyrics) lyrics = `toi buscando pero te abiso que no funsiona ${queue.songs[0].title}.`;
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = `te dije que no funsionaba ${queue.songs[0].title}.`;
     }
 
     let lyricsEmbed = new MessageEmbed()
