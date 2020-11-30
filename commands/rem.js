@@ -5,6 +5,7 @@ module.exports = {
   //name: "rem",
  aliases: ["rem34"],
 description: "estoi probando ok?",
+}
 Booru.search(site, tags, { limit: 1, random: false })
   .then(posts => {
     if (posts.length === 0) {
@@ -15,4 +16,3 @@ Booru.search(site, tags, { limit: 1, random: false })
       console.log(post.fileUrl)
     }
   })
-}
