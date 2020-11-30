@@ -1,16 +1,17 @@
-const { MessageEmbed } = require("discord.js");
-const Booru = require('booru');
 const Booru = require('./dist')
 const { BooruError, sites } = require('./dist')
+// for ES6:
+// import Booru, { search, BooruError, sites } from 'booru'
+
 const argTags = process.argv.slice(3)
 const site = process.argv[2] || 'sb'
-const tags = process.argv[2] ? argTags : ['rem_(re:zero)']'
-
+const tags = process.argv[2] ? argTags : ['cat']
 module.exports = {
   name: "rem",
   aliases: ["rem34"],
   description: "no funsionar por aora pero despues funsionar xdd",
   //ase la vuscasion
+// Search with promises
 Booru.search(site, tags, { limit: 1, random: false })
   .then(posts => {
     if (posts.length === 0) {
