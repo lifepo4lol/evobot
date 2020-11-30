@@ -5,8 +5,8 @@ module.exports = {
  aliases: ["rem34"],
 description: "estoi probando ok?",
 }
-Booru.search('gelbooru', ['rem_(re:zero)'], { limit: 3, random: true })
- .then(posts => {
-   for (let post of posts)
-   console.log(post.fileUrl, post.postView)
-})
+async function booruSearch(site, tags, limit = 1, random = true) {
+  const posts = await Booru.search(site, tags, {limit, random})
+
+  return console.log(posts[0].fileUrl)
+}
