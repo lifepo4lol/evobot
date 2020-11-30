@@ -1,5 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const Booru = require('booru');
+const Booru = require('./dist')
+const { BooruError, sites } = require('./dist')
 
 module.exports = {
   name: "rem",
