@@ -13,7 +13,6 @@ module.exports = {
   aliases: ["rem34"],
   description: "estoi probando ok?",
 }
- execute(message) {
 Booru.search(site, tags, { limit: 1, random: true })
   .then(posts => {
     if (posts.length === 0) {
@@ -34,4 +33,3 @@ Booru.search(site, tags, { limit: 1, random: true })
       console.error(err)
     }
   })
-}
