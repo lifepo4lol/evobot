@@ -8,6 +8,12 @@ const site = process.argv[2] || 'sb'
 const tags = process.argv[2] ? argTags : ['cat']
 
 // Search with promises
+module.exports = {
+  name: "rem",
+  aliases: ["rem34"],
+  description: "estoi probando ok?",
+}
+ execute(message) {
 Booru.search(site, tags, { limit: 1, random: false })
   .then(posts => {
     if (posts.length === 0) {
@@ -28,26 +34,4 @@ Booru.search(site, tags, { limit: 1, random: false })
       console.error(err)
     }
   })
-
-// Search with async/await
-async function booruSearch(site, tags, limit = 1, random = true) {
-  const posts = await Booru.search(site, tags, {limit, random})
-
-  return console.log(posts[0].fileUrl)
-}
-
-// Create an instance of a booru to use yourself
-// This allows you to create a booru with certain credentials/settings and reuse it
-// Internally, `Booru.search` just creates boorus and caches them
-// Ex: `Booru.forSite('safebooru')`
-async function booruClassSearch(site, tags, limit = 1, random = true) {
-  const myBooru = Booru.forSite(site)
-  const posts = await myBooru.search(tags, {limit, random})
-
-  return console.log(posts[0].fileUrl)
-}
-
-// You can also check the sites and the options for each
-//   console.log(Booru.sites)
-// Or just the site URLs
-//   console.log(Object.keys(sites))
+};
