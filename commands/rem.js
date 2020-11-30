@@ -14,7 +14,7 @@ module.exports = {
   description: "estoi probando ok?",
 }
  execute(message) {
-Booru.search(site, tags, { limit: 1, random: false })
+Booru.search(site, tags, { limit: 1, random: true })
   .then(posts => {
     if (posts.length === 0) {
       console.log('No images found.')
@@ -34,4 +34,4 @@ Booru.search(site, tags, { limit: 1, random: false })
       console.error(err)
     }
   })
-};
+}
