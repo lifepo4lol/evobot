@@ -21,6 +21,7 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`marcelo la re puso jaja sentiste clitoris`, { type: "LISTENING" });
+  client.user.setActivity(`super machista opersor`, { type: "PLAYING" });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
