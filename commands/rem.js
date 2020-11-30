@@ -1,4 +1,5 @@
-import Booru, { search, BooruError, sites } from 'booru'
+const Booru = require('./dist')
+const { BooruError, sites } = require('./dist')
 
 module.exports = {
   //name: "rem",
