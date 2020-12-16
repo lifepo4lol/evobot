@@ -116,11 +116,11 @@ module.exports = {
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
-            queue.textChannel.send(`${user} resusito la musicasion`).catch(console.error);
+            queue.textChannel.send(`${user} mato la musicasion`).catch(console.error);
           } else {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.resume();
-            queue.textChannel.send(`${user} despausiono la musicasion`).catch(console.error);
+            queue.textChannel.send(`${user} resusito la musicasion`).catch(console.error);
           }
           break;
 
